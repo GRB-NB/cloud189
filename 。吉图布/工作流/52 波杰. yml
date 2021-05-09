@@ -33,3 +33,4 @@ jobs:
           rate_52pj: ${{ secrets.rate_52pj }}
         run: |
           python3 ./Checkin52pj/Checkin52pjForSCF.py
+          
