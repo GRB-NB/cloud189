@@ -88,7 +88,7 @@ def pjRate(*args):
                 msg += "\n"
     except:
          pusher("52pojie  免费评分失败")
-        pass
+         pass
     return msg + "\n"
 
 
