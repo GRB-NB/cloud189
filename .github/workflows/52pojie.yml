@@ -2,7 +2,7 @@ name: '52pojie'
 
 on:
   schedule:
-    - cron: '23 */6 * * *'
+    - cron: '23 0,1 * * *'
   workflow_dispatch:
 
 jobs:
