@@ -16,7 +16,7 @@ jobs:
       - name: requirements
         run : pip3 install requests
 
-      - name: main
+      - name: master
         env:
           SCKEY: ${{ secrets.SCKEY }}
           SCTKEY: ${{ secrets.SCTKEY }}
