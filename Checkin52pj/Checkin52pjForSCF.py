@@ -86,7 +86,6 @@ def pjRate(*args):
             else:
                 msg += re.findall("errorhandle_rate\('.*'", r.text)[0][18:-1]
                 msg += "\n"
-            #pusher(msg)   
     except:
          pusher("52pojie  免费评分失败")
          pass
