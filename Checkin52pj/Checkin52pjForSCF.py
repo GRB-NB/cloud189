@@ -42,7 +42,7 @@ def main(*args):
     except:
         msg += "52pj出错,大概率是触发52pj安全防护，访问出错。自行修改脚本运行时间和次数，总有能访问到的时间"
         msg += "\n "+ str(b)
-        pusher("52pojie  访问出错",msg)
+        pusher("52pojie  访问出错")
     return msg + "\n"
 
 
