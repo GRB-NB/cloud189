@@ -32,10 +32,10 @@ def main(*args):
             msg += "cookie_52pj失效，需重新获取"
         elif "恭喜"  in c:
             msg += "52pj签到成功"
-            pusher("52pj签到成功")
+            pusher("52pj签到成功",c)
         elif "不是进行中的任务" in c:
             msg += "不是进行中的任务"
-            pusher("不是进行中的任务")
+            pusher("不是进行中的任务",c)
         else:
             print(c)
             pusher(c)
@@ -86,6 +86,7 @@ def pjRate(*args):
             else:
                 msg += re.findall("errorhandle_rate\('.*'", r.text)[0][18:-1]
                 msg += "\n"
+            pusher(msg)   
     except:
          pusher("52pojie  免费评分失败")
          pass
