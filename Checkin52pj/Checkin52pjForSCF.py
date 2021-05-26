@@ -46,7 +46,7 @@ def main(*args):
 
 
 def pjRate(*args):
-   try:
+    try:
         msg = ""
         s = requests.Session()
         headers={
