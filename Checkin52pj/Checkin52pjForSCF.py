@@ -109,6 +109,7 @@ def pjCheckin(*args):
         i += 1
     print(msg[:-1])
     return msg
+    return i
 
 if __name__ == "__main__":
     if cookie:
