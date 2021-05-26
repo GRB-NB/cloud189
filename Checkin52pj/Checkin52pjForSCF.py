@@ -32,17 +32,15 @@ def main(*args):
             msg += "cookie_52pj失效，需重新获取"
         elif "恭喜"  in c:
             msg += "52pj签到成功"
-            pusher("52pj签到成功",c)
+            pusher("52pj签到成功", c)
         elif "不是进行中的任务" in c:
             msg += "不是进行中的任务"
-            pusher("不是进行中的任务",c)
         else:
             print(c)
-            pusher(c)
     except:
         msg += "52pj出错,大概率是触发52pj安全防护，访问出错。自行修改脚本运行时间和次数，总有能访问到的时间"
-        msg += "\n" + str(b)
-        pusher("52pojie  访问出错")
+        msg += "\n如果错误需要推送的话，自行去掉代码内的注释"
+        pusher("52pojie  访问出错", b)
     return msg + "\n"
 
 
@@ -79,6 +77,7 @@ def pjRate(*args):
             r = s.post(rateurl, headers=headers, data=data)
             if "succeedhandle_rate" in r.text:
                 msg += re.findall("succeedhandle_rate\('.*'", r.text)[0][19:]
+                pusher("免费评分成功")
                 break
             elif "评分数超过限制" in r.text:
                 msg += re.findall("errorhandle_rate\('.*'", r.text)[0][18:-1]
@@ -86,10 +85,9 @@ def pjRate(*args):
             else:
                 msg += re.findall("errorhandle_rate\('.*'", r.text)[0][18:-1]
                 msg += "\n"
-            pusher(msg)     
     except:
-         pusher("52pojie  免费评分失败")
-         pass
+        pusher("52pojie  免费评分失败")
+        pass
     return msg + "\n"
 
 
