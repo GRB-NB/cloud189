@@ -12,20 +12,21 @@ from bs4 import BeautifulSoup
 cookie = os.environ.get('cookie_52pj')
 pj_rate = os.environ.get('rate_52pj')
 
-s = requests.Session()
-headers={
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36',
-    'Cookie': cookie,
-    'ContentType':'text/html;charset=gbk'
-}
 
 def main(*args):
-    msg = ""
     try:
+        msg = ""
+        s = requests.Session()
+        headers={
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36',
+            'Cookie': cookie,
+            'ContentType':'text/html;charset=gbk'
+        }
         s.get('https://www.52pojie.cn/home.php?mod=task&do=apply&id=2', headers=headers)
         a = s.get('https://www.52pojie.cn/home.php?mod=task&do=draw&id=2', headers=headers)
         b = BeautifulSoup(a.text,'html.parser')
         c = b.find('div',id='messagetext').find('p').text
+
 
         if "您需要先登录才能继续本操作"  in c:
             pusher("52pojie  Cookie过期", c)
@@ -40,14 +41,19 @@ def main(*args):
     except:
         msg += "52pj出错,大概率是触发52pj安全防护，访问出错。自行修改脚本运行时间和次数，总有能访问到的时间"
         msg += "\n如果错误需要推送的话，自行去掉代码内的注释"
-        msg += pjCheckin(i)
-        #pusher("52pojie  访问出错")
+        pusher("52pojie  访问出错")
     return msg + "\n"
 
 
 def pjRate(*args):
-    msg = ""
-    try:
+   try:
+        msg = ""
+        s = requests.Session()
+        headers={
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36',
+            'Cookie': cookie,
+            'ContentType':'text/html;charset=gbk'
+        }
         # 获取热门帖子
         rssurl = "https://www.52pojie.cn/forum.php?mod=guide&view=hot&rss=1"
         r = s.get(rssurl, headers=headers)
@@ -109,7 +115,6 @@ def pjCheckin(*args):
         i += 1
     print(msg[:-1])
     return msg
-    return i
 
 if __name__ == "__main__":
     if cookie:
